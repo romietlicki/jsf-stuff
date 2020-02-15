@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<title>Hello World</title>
+</head>
+
+	<h:body>
+	
+	<p:importEnum type="br.com.rodrigo.model.enums.Turno" var="Turno" allSuffix="ALL_ENUM_VALUES" /> 
+	
+			<h:outputLabel value="Hello World" escape="true"></h:outputLabel><br></br>
+		
+			<h:outputLabel value="Nome: #{estudanteRegistrarBean.estudante.nome} #{estudanteRegistrarBean.estudante['sobrenome']}" escape="true"></h:outputLabel><br/>
+			
+			<h:outputLabel value="Nota 1: #{estudanteRegistrarBean['estudante']['nota1']}" escape="true"></h:outputLabel><br/>
+			
+			<h:outputLabel value="Nota 2: #{estudanteRegistrarBean.estudante['nota2']}" escape="true"></h:outputLabel><br/>
+			
+			<h:outputLabel value="Nota 3: #{estudanteRegistrarBean.estudante['nota3']}" escape="true"></h:outputLabel><br/>
+			
+			<!-- if's ternarios para validar notas: -->
+			<h:outputLabel value="Nota 2 é maior do que nota 1 ? #{estudanteRegistrarBean.estudante.nota2 gt estudanteRegistrarBean.estudante.nota1 ? 'SIM' : 'NÃO'}"  ></h:outputLabel><br/>
+			
+			<h:outputLabel value="Nota 1 é maior ou igual a nota 3 ? #{estudanteRegistrarBean.estudante.nota1 ge estudanteRegistrarBean.estudante.nota3 ? 'SIM' : 'NÃO'}"  ></h:outputLabel><br/>
+			
+			<h:outputLabel value="Nota 2 é menor do que nota 3 ? #{estudanteRegistrarBean.estudante.nota2 lt estudanteRegistrarBean.estudante.nota3 ? 'SIM' : 'NÃO'}"  ></h:outputLabel><br/>
+			<br></br>
+			<h:outputText value = "Enums turno: "/><br/>
+				<h:outputLabel value="Turno : #{estudanteRegistrarBean.estudante.turno} "></h:outputLabel><br/>
+				
+				<!-- validar se o enum eh igual ao que esta na classe enum importada pelo primefaces <p:importEnum /> -->
+				<h:outputLabel value="Turno igual a Matutino? : #{estudanteRegistrarBean.estudante.turno eq Turno.MATUTINO} "></h:outputLabel><br/>
+				<br></br>
+				
+				<!-- leitura de arrays dentro de estudante -->
+				<h:outputLabel value="Frase Array : #{estudanteRegistrarBean.estudante.nomesArray[0]} #{estudanteRegistrarBean.estudante.nomesArray[1]} 
+				#{estudanteRegistrarBean.estudante.nomesArray[2]} #{estudanteRegistrarBean.estudante.nomesArray[3]} "></h:outputLabel><br/>
+				<br></br>
+				
+				<!-- iteração sobre arrays usando ui:repeat -->
+				<h:outputText value="Iteracao de arrays: "></h:outputText><br></br>
+				<ui:repeat var="nome" value="#{estudanteRegistrarBean.estudante.nomesArray}">
+						<h:outputLabel value="#{nome}"/>
+						<br></br>
+				</ui:repeat>
+				<br></br>
+				
+					<!-- iteração sobre List usando ui:repeat -->
+				<h:outputText value = "Iteracao de List: "></h:outputText><br></br>
+				<ui:repeat var="nome" value="#{estudanteRegistrarBean.estudante.nomesList}">
+						<h:outputLabel value="#{nome}"/>
+						<br></br>
+				</ui:repeat>
+			
+			<!-- palavras reservadas expression languages jsf: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod  -->
+	</h:body>
+
+
+</html>
