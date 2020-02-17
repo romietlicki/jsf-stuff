@@ -7,10 +7,9 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
+<h:head>
 <title>Hello World</title>
-</head>
-
+</h:head>
 <h:body>
 
 	<p:importEnum type="br.com.rodrigo.model.enums.Turno" var="Turno"
@@ -19,21 +18,26 @@
 	<h:outputLabel value="Hello World" escape="true"></h:outputLabel>
 	<br></br>
 
+
+<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nome: #{estudanteRegistrarBean.estudante.nome} #{estudanteRegistrarBean.estudante['sobrenome']}"
 		escape="true"></h:outputLabel>
 	<br />
 
+<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nota 1: #{estudanteRegistrarBean['estudante']['nota1']}"
 		escape="true"></h:outputLabel>
 	<br />
 
+<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nota 2: #{estudanteRegistrarBean.estudante['nota2']}"
 		escape="true"></h:outputLabel>
 	<br />
 
+<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nota 3: #{estudanteRegistrarBean.estudante['nota3']}"
 		escape="true"></h:outputLabel>
@@ -66,8 +70,8 @@
 
 	<!-- leitura de arrays dentro de estudante -->
 	<h:outputLabel
-		value="Frase Array : #{estudanteRegistrarBean.estudante.nomesArray[0]} #{estudanteRegistrarBean.estudante.nomesArray[1]} 
-				#{estudanteRegistrarBean.estudante.nomesArray[2]} #{estudanteRegistrarBean.estudante.nomesArray[3]} "></h:outputLabel>
+		value="Frase Array : #{estudanteRegistrarBean.nomesArray[0]} #{estudanteRegistrarBean.nomesArray[1]} 
+				#{estudanteRegistrarBean.nomesArray[2]} #{estudanteRegistrarBean.nomesArray[3]} "></h:outputLabel>
 	<br />
 	<br></br>
 
@@ -75,7 +79,7 @@
 	<h:outputText value="Iteracao de arrays: "></h:outputText>
 	<br></br>
 	<ui:repeat var="nome"
-		value="#{estudanteRegistrarBean.estudante.nomesArray}">
+		value="#{estudanteRegistrarBean.nomesArray}">
 		<h:outputLabel value="#{nome}" />
 		<br></br>
 	</ui:repeat>
@@ -85,7 +89,7 @@
 	<h:outputText value="Iteracao de List: "></h:outputText>
 	<br></br>
 	<ui:repeat var="nome"
-		value="#{estudanteRegistrarBean.estudante.nomesList}">
+		value="#{estudanteRegistrarBean.nomesList}">
 		<h:outputLabel value="#{nome}" />
 		<br></br>
 	</ui:repeat>
@@ -93,38 +97,50 @@
 
 	<!-- ui:repeat SET -->
 	<ui:repeat var="nome"
-		value="#{estudanteRegistrarBean.estudante.nomeSet}">
+		value="#{estudanteRegistrarBean.nomeSet}">
 		<h:outputLabel value="#{nome}"></h:outputLabel><br></br>
 	</ui:repeat>
 	<br></br>
 	
 	<!-- ui:repeat MAP -->
 	<ui:repeat var="entry"
-		value="#{estudanteRegistrarBean.estudante.nomeMap.entrySet().toArray()}"><br></br>
+		value="#{estudanteRegistrarBean.nomeMap.entrySet().toArray()}"><br></br>
 		<h:outputLabel value="#{entry}"></h:outputLabel><br></br>
 	</ui:repeat>
 	<br></br>
 	
 	<!-- usando rendered para pegar o valor do atributo boolean mostrarNotas e renderizar na tela se for true -->
-
 	<h:form>
-		<h:commandButton value="Exibir Notas"
-			action="estudanteRegistrarBean.estudante.exibirNotas"></h:commandButton><br></br>
-		<h:outputText value="#{estudanteRegistrarBean.estudante.nome}"></h:outputText>
+		<h:commandButton value="Exibir Notas">
+		<!-- chamada ajax que vai renderizar na tela a table notasGrid chamando o metodo exibirNotas() -->
+			<f:ajax render="notasGrid" listener="#{estudanteRegistrarBean.exibirNotas()}" />
+		</h:commandButton>
+		
+		<h:commandButton value="Esconder Notas">
+		<!-- chamada ajax que vai renderizar na tela a table notasGrid chamando o metodo esconderNotas() -->
+			<f:ajax render="notasGrid" listener="#{estudanteRegistrarBean.esconderNotas()}" />
+		</h:commandButton>
 		<br></br>
-		<h:outputText value="#{estudanteRegistrarBean.estudante.sobrenome}"></h:outputText>
+
+<!-- panelGrid para criar uma table -->
+		<h:panelGrid id="notasGrid">
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nome}"></h:outputText>
+			<br></br>
+			<h:outputText value="#{estudanteRegistrarBean.estudante.sobrenome}"></h:outputText>
+			<br></br>
+			<h:outputText value="#{estudanteRegistrarBean.estudante.turno}"></h:outputText>
+			<br></br>
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nota1}"
+				rendered="#{estudanteRegistrarBean.mostrarNotas}"></h:outputText>
+			<br></br>
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nota2}"
+				rendered="#{estudanteRegistrarBean.mostrarNotas}"></h:outputText>
+			<br></br>
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nota3}"
+				rendered="#{estudanteRegistrarBean.mostrarNotas}"></h:outputText>
+		</h:panelGrid>
 		<br></br>
-		<h:outputText value="#{estudanteRegistrarBean.estudante.turno}"></h:outputText>
-		<br></br>
-		<h:outputText value="#{estudanteRegistrarBean.estudante.nota1}"
-			rendered="#{estudanteRegistrarBean.estudante.mostrarNotas}"></h:outputText>
-		<br></br>
-		<h:outputText value="#{estudanteRegistrarBean.estudante.nota2}"
-			rendered="#{estudanteRegistrarBean.estudante.mostrarNotas}"></h:outputText>
-		<br></br>
-		<h:outputText value="#{estudanteRegistrarBean.estudante.nota3}"
-			rendered="#{estudanteRegistrarBean.estudante.mostrarNotas}"></h:outputText>
-		<br></br>
+		
 	</h:form>
 
 	<!-- palavras reservadas expression languages jsf: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod  -->
