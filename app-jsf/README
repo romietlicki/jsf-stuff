@@ -5,3 +5,20 @@ localhost:
 http://localhost:8080/maratona-jsf-0.0.1/index.xhtml
 
 importar como maven project
+
+------------------------------------------------------------------
+
+JSF CDI escopos:
+
+@PostConstruct - essa anotation é usada para iniciar o metodo que estiver usando, assim que o bean for iniciado, ou seja apos a construção do bean, de acordo com o tipo de escopo utilizado.
+
+@ViewScoped - quando os bean fica vivo e mantendo os valores enquanto o usuario estiver na mesma pagina, os valores sao zerados quando o usuario muda de pagina.
+
+@ApplicationScoped - quando o bean fica vivo e mantem os valores enquanto o sistema estiver rodando, ou seja, enquanto o servidor estiver iniciado.
+
+@SessionScoped - mantem o bean vivo e mantem os dados enquanto a sessao estiver valida, o bean é morto assim que a sessao é invalidada ou o browser é fechado.
+
+@RequestScoped - mantem o bean vivo e mantem os dados somente no mesmo request, quando um novo request é feito, os dados do bean é zerado e iniciado novamente, no novo request.
+
+
+
