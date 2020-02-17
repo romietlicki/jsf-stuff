@@ -103,9 +103,29 @@
 		value="#{estudanteRegistrarBean.estudante.nomeMap.entrySet().toArray()}"><br></br>
 		<h:outputLabel value="#{entry}"></h:outputLabel><br></br>
 	</ui:repeat>
+	<br></br>
 	
+	<!-- usando rendered para pegar o valor do atributo boolean mostrarNotas e renderizar na tela se for true -->
 
-
+	<h:form>
+		<h:commandButton value="Exibir Notas"
+			action="estudanteRegistrarBean.estudante.exibirNotas"></h:commandButton><br></br>
+		<h:outputText value="#{estudanteRegistrarBean.estudante.nome}"></h:outputText>
+		<br></br>
+		<h:outputText value="#{estudanteRegistrarBean.estudante.sobrenome}"></h:outputText>
+		<br></br>
+		<h:outputText value="#{estudanteRegistrarBean.estudante.turno}"></h:outputText>
+		<br></br>
+		<h:outputText value="#{estudanteRegistrarBean.estudante.nota1}"
+			rendered="#{estudanteRegistrarBean.estudante.mostrarNotas}"></h:outputText>
+		<br></br>
+		<h:outputText value="#{estudanteRegistrarBean.estudante.nota2}"
+			rendered="#{estudanteRegistrarBean.estudante.mostrarNotas}"></h:outputText>
+		<br></br>
+		<h:outputText value="#{estudanteRegistrarBean.estudante.nota3}"
+			rendered="#{estudanteRegistrarBean.estudante.mostrarNotas}"></h:outputText>
+		<br></br>
+	</h:form>
 
 	<!-- palavras reservadas expression languages jsf: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod  -->
 </h:body>

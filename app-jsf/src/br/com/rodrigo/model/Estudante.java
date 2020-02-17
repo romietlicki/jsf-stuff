@@ -25,6 +25,7 @@ public class Estudante implements Serializable{
 	private List<String> nomesList = Arrays.asList("Teste", "lista", "jsf");
 	private Set<String> nomeSet = new HashSet<>(Arrays.asList("Goku", "Kuririn", "Picollo", "Freeza"));
 	private Map<String, String> nomeMap = new HashMap<>();
+	private boolean mostrarNotas;
 	
 	{
 		nomeMap.put("Goku", "O mais forte");
@@ -39,6 +40,17 @@ public class Estudante implements Serializable{
 		}
 		
 	}
+	
+	public String exibirNotas() {
+		this.mostrarNotas = true;
+		return "index";
+	}
+	
+	public String esconderNotas() {
+		this.mostrarNotas = false;
+		return "index";
+	}
+	
 
 	public String getNome() {
 		return nome;
@@ -118,6 +130,14 @@ public class Estudante implements Serializable{
 
 	public void setNomeMap(Map<String, String> nomeMap) {
 		this.nomeMap = nomeMap;
+	}
+
+	public boolean isMostrarNotas() {
+		return mostrarNotas;
+	}
+
+	public void setMostrarNotas(boolean mostrarNotas) {
+		this.mostrarNotas = mostrarNotas;
 	}
 	
 
