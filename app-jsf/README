@@ -4,6 +4,9 @@ maratona-jsf-0.0.1
 localhost:
 http://localhost:8080/maratona-jsf-0.0.1/index.xhtml
 
+url tela de login:
+http://localhost:8080/maratona-jsf-0.0.1/login.xhtml
+
 importar como maven project
 
 ------------------------------------------------------------------
