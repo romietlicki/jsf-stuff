@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<title>Hello World</title>
+	<title>Hello World</title>
 </h:head>
 <h:body>
 
@@ -19,25 +19,25 @@
 	<br></br>
 
 
-<!-- pegar os valores do bean -->
+	<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nome: #{estudanteRegistrarBean.estudante.nome} #{estudanteRegistrarBean.estudante['sobrenome']}"
 		escape="true"></h:outputLabel>
 	<br />
 
-<!-- pegar os valores do bean -->
+	<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nota 1: #{estudanteRegistrarBean['estudante']['nota1']}"
 		escape="true"></h:outputLabel>
 	<br />
 
-<!-- pegar os valores do bean -->
+	<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nota 2: #{estudanteRegistrarBean.estudante['nota2']}"
 		escape="true"></h:outputLabel>
 	<br />
 
-<!-- pegar os valores do bean -->
+	<!-- pegar os valores do bean -->
 	<h:outputLabel
 		value="Nota 3: #{estudanteRegistrarBean.estudante['nota3']}"
 		escape="true"></h:outputLabel>
@@ -78,8 +78,7 @@
 	<!-- iteração sobre arrays usando ui:repeat -->
 	<h:outputText value="Iteracao de arrays: "></h:outputText>
 	<br></br>
-	<ui:repeat var="nome"
-		value="#{estudanteRegistrarBean.nomesArray}">
+	<ui:repeat var="nome" value="#{estudanteRegistrarBean.nomesArray}">
 		<h:outputLabel value="#{nome}" />
 		<br></br>
 	</ui:repeat>
@@ -88,41 +87,44 @@
 	<!-- iteração sobre List usando ui:repeat -->
 	<h:outputText value="Iteracao de List: "></h:outputText>
 	<br></br>
-	<ui:repeat var="nome"
-		value="#{estudanteRegistrarBean.nomesList}">
+	<ui:repeat var="nome" value="#{estudanteRegistrarBean.nomesList}">
 		<h:outputLabel value="#{nome}" />
 		<br></br>
 	</ui:repeat>
 	<br></br>
 
 	<!-- ui:repeat SET -->
-	<ui:repeat var="nome"
-		value="#{estudanteRegistrarBean.nomeSet}">
-		<h:outputLabel value="#{nome}"></h:outputLabel><br></br>
+	<ui:repeat var="nome" value="#{estudanteRegistrarBean.nomeSet}">
+		<h:outputLabel value="#{nome}"></h:outputLabel>
+		<br></br>
 	</ui:repeat>
 	<br></br>
-	
+
 	<!-- ui:repeat MAP -->
 	<ui:repeat var="entry"
-		value="#{estudanteRegistrarBean.nomeMap.entrySet().toArray()}"><br></br>
-		<h:outputLabel value="#{entry}"></h:outputLabel><br></br>
+		value="#{estudanteRegistrarBean.nomeMap.entrySet().toArray()}">
+		<br></br>
+		<h:outputLabel value="#{entry}"></h:outputLabel>
+		<br></br>
 	</ui:repeat>
 	<br></br>
-	
+
 	<!-- usando rendered para pegar o valor do atributo boolean mostrarNotas e renderizar na tela se for true -->
 	<h:form>
 		<h:commandButton value="Exibir Notas">
-		<!-- chamada ajax que vai renderizar na tela a table notasGrid chamando o metodo exibirNotas() -->
-			<f:ajax render="notasGrid" listener="#{estudanteRegistrarBean.exibirNotas()}" />
+			<!-- chamada ajax que vai renderizar na tela a table notasGrid chamando o metodo exibirNotas() -->
+			<f:ajax render="notasGrid"
+				listener="#{estudanteRegistrarBean.exibirNotas()}" />
 		</h:commandButton>
-		
+
 		<h:commandButton value="Esconder Notas">
-		<!-- chamada ajax que vai renderizar na tela a table notasGrid chamando o metodo esconderNotas() -->
-			<f:ajax render="notasGrid" listener="#{estudanteRegistrarBean.esconderNotas()}" />
+			<!-- chamada ajax que vai renderizar na tela a table notasGrid chamando o metodo esconderNotas() -->
+			<f:ajax render="notasGrid"
+				listener="#{estudanteRegistrarBean.esconderNotas()}" />
 		</h:commandButton>
 		<br></br>
 
-<!-- panelGrid para criar uma table -->
+		<!-- panelGrid para criar uma table -->
 		<h:panelGrid id="notasGrid">
 			<h:outputText value="#{estudanteRegistrarBean.estudante.nome}"></h:outputText>
 			<br></br>
@@ -140,7 +142,7 @@
 				rendered="#{estudanteRegistrarBean.mostrarNotas}"></h:outputText>
 		</h:panelGrid>
 		<br></br>
-		
+
 	</h:form>
 
 	<!-- palavras reservadas expression languages jsf: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod  -->
