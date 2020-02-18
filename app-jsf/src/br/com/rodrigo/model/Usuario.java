@@ -21,7 +21,7 @@ public class Usuario implements Serializable{
 		
 		if(user.equals("rodrigo.mietlicki") && password.equals("rodrigo123")) {
 			estudante = new Estudante();
-			return "inicio?faces-redirect=true";
+			return "restricted/inicio?faces-redirect=true";
 		} else {
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario e/ou senha invalidos", ""));
@@ -32,7 +32,7 @@ public class Usuario implements Serializable{
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		estudante = null;
-		return "login?faces-redirect=true";
+		return "/login?faces-redirect=true";
 	}
 		
 
@@ -55,5 +55,14 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Estudante getEstudante() {
+		return estudante;
+	}
+
+	public void setEstudante(Estudante estudante) {
+		this.estudante = estudante;
+	}
+	
 
 }

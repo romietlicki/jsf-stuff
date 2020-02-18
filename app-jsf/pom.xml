@@ -35,6 +35,7 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- implementacao do cdi -->
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
