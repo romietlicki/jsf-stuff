@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head></h:head>
+
+<h:body>
+
+	<h:form>
+
+		<h:panelGrid id="panelGridId" columns="1">
+			<h:outputText
+				value="Exibindo valor do context param diretamente na view: #{facesContext.externalContext.getInitParameter('images.location')}"></h:outputText>
+			<br></br>
+
+			<h:commandButton value="Imprimir valor do context param via bean">
+				<f:ajax render="testGrid"
+					listener="#{comunicacaoTeste1Bean.showParameters()}" />
+			</h:commandButton>
+			<br></br>
+			<h:commandButton value="Esconder valor do context param via bean">
+				<f:ajax render="testGrid"
+					listener="#{comunicacaoTeste1Bean.hideParameters()}" />
+			</h:commandButton>
+
+		</h:panelGrid>
+		<br></br>
+	
+	<!-- grid que sera renderizada dependendo do valor da variavel boolean showParam -->
+		<h:panelGrid id="testGrid">
+			<h:outputText value="#{facesContext.externalContext.getInitParameter('images.location')}" rendered="#{comunicacaoTeste1Bean.showParam}"></h:outputText>
+		</h:panelGrid>
+		
+		<h:outputLabel value="#{comunicacaoTeste1Bean.nome}" id="labelId" rendered="#{comunicacaoTeste1Bean.showParam}"></h:outputLabel>
+
+	</h:form>
+
+</h:body>
+</html>
