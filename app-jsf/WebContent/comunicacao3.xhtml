@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+
+<h:body>
+
+	<h:form>
+
+		<h:panelGrid columns="1">
+			<p:messages autoUpdate="true"></p:messages>
+			
+			<h:commandButton actionListener="#{comunicacaoTeste3Bean.execute}">
+			<f:attribute value="#{comunicacaoTeste3Bean.buttonName}" name="value"></f:attribute>
+			</h:commandButton>
+
+			<h:inputText value="#{comunicacaoTeste3Bean.inputUsuario}" name="userInput">
+			
+			</h:inputText>
+
+			<h:commandButton value="Add param"
+				actionListener="#{comunicacaoTeste3Bean.execute}">
+				<f:attribute value="DevDojo" name="nome"></f:attribute>
+				<f:attribute value="Fodastico" name="adjetivo"></f:attribute>
+				<f:attribute value="#{comunicacaoTeste3Bean.inputUsuario}" name="inputUsuario"></f:attribute>
+			</h:commandButton>
+
+		</h:panelGrid>
+	</h:form>
+
+
+</h:body>
+
+</html>

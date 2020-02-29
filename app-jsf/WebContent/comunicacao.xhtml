@@ -37,6 +37,11 @@
 		
 		<h:outputLabel value="#{comunicacaoTeste1Bean.nome}" id="labelId" rendered="#{comunicacaoTeste1Bean.showParam}"></h:outputLabel>
 
+		<h:link value="Enviar Dados para proxima tela" outcome="comunicacao2">
+			<f:param name="nome" value="Rodrigo"></f:param>
+			<f:param name="sobrenome" value="Mietlicki"></f:param>
+		</h:link>
+
 	</h:form>
 
 </h:body>
