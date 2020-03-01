@@ -17,7 +17,7 @@ public class Usuario implements Serializable{
 	private String userName;
 	private String password;
 	private Estudante estudante;
-	private List<Locale> listLocale = Arrays.asList(Locale.ENGLISH, new Locale("pt"));
+	private List<Locale> listLocale = Arrays.asList(Locale.ENGLISH, new Locale("pt"), Locale.FRENCH);
 	private String language;
 	
 	public String validaLogin(){
