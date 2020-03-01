@@ -1,6 +1,9 @@
 package br.com.rodrigo.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -14,6 +17,8 @@ public class Usuario implements Serializable{
 	private String userName;
 	private String password;
 	private Estudante estudante;
+	private List<Locale> listLocale = Arrays.asList(Locale.ENGLISH, new Locale("pt"));
+	private String language;
 	
 	public String validaLogin(){
 		String user = this.getUserName();
@@ -62,6 +67,22 @@ public class Usuario implements Serializable{
 
 	public void setEstudante(Estudante estudante) {
 		this.estudante = estudante;
+	}
+
+	public List<Locale> getListLocale() {
+		return listLocale;
+	}
+
+	public void setListLocale(List<Locale> listLocale) {
+		this.listLocale = listLocale;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 	
 

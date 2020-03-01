@@ -31,7 +31,12 @@
 			<h:inputSecret value="#{usuario.password}" id="password"
 				required="true" requiredMessage="Por favor, digite sua senha">
 				</h:inputSecret>
-				<br></br>
+
+			<h:selectOneMenu value="#{usuario.language}">
+				<f:selectItems value="#{usuario.listLocale}" var="locale"
+					itemValue="#{locale.language}" itemLabel="#{locale.displayLanguage}"></f:selectItems>
+			</h:selectOneMenu>
+			<br></br>
 
 				<h:commandButton value="Login" action="#{usuario.validaLogin()}"></h:commandButton>
 		</h:panelGrid>

@@ -7,12 +7,18 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head></h:head>
-
+<f:view locale="#{usuario.language}">
 <h:body>
-	<h:outputText value="Logado com sucesso!"></h:outputText>
-
+<h:outputText value="#{usuario.language}"></h:outputText>
 	<h:form>
-		<h:commandButton value="Logout" action="#{usuario.logout}"></h:commandButton>
+	<h1>#{msg.userLogged} #{usuario.estudante.nome}</h1><br></br>
+			<h:outputFormat value="#{msg.userLogged}">
+				<f:param value="#{usuario.estudante.nome}"></f:param>
+				<f:param value="#{usuario.estudante.sobrenome}"></f:param>
+			</h:outputFormat>
+			<br></br>
+			<h:commandButton value="Logout" action="#{usuario.logout}"></h:commandButton>
 	</h:form>
 </h:body>
+</f:view>
 </html>
