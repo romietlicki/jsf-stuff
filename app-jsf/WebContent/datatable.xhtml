@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head></h:head>
+
+<h:body>
+
+	<h:form>
+		<h:dataTable value="#{dataTableTestBean.estudanteList}"
+			var="estudante">
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink
+						actionListener="#{dataTableTestBean.orderByNome('asc')}"> Nome Asc</h:commandLink>
+					<h:commandLink
+						actionListener="#{dataTableTestBean.orderByNome('desc')}"> Nome desc</h:commandLink>
+				</f:facet>
+				<h:outputText value="#{estudante.nome}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink
+						actionListener="#{dataTableTestBean.orderBySobreNome('asc')}"> SobreNome Asc</h:commandLink>
+					<h:commandLink
+						actionListener="#{dataTableTestBean.orderBySobreNome('desc')}"> SobreNome desc</h:commandLink>
+				</f:facet>
+				<h:outputText value="#{estudante.sobrenome}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Turno</f:facet>
+				<h:outputText value="#{estudante.turno}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

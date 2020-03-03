@@ -22,6 +22,19 @@ public class Estudante implements Serializable{
 	private double nota3 = 6.0;
 	private Turno turno = Turno.MATUTINO;
 	
+	public Estudante() {
+		
+	}
+
+	public Estudante(String nome, String sobrenome, double nota1, double nota2, double nota3, Turno turno) {
+		super();
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.nota1 = nota1;
+		this.nota2 = nota2;
+		this.nota3 = nota3;
+		this.turno = turno;
+	}
 
 	public String getNome() {
 		return nome;
